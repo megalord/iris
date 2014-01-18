@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Mechanical Iris Generator</title>
+    <style>
+        #render{width:200px; height:200px; margin:200px 0px 0px 200px; position:relative; background-color:green;}
+    </style>
+</head>
+<body>
+    <form>
+        <label>slices: <input type="number" name="slices" value="5" min="3" max="8"></label>
+        <label>color: <input type="color" name="color"></label>
+        <label>time: <input type="number" name="time" value="2"></label>
+        <button id="generate" type="button">generate iris</button>
+        <button id="open" type="button">open</button>
+        <button id="close" type="button">close</button>
+    </form>
+    <p>Note: To ensure proper functionality of the generator, please use the latest version of Google Chrome.</p>
+    <div id="render">Container div</div>
+    <script src="iris.js"></script>
+    <script>
+        var color = document.querySelector('input[name="color"]'),
+            slices = document.querySelector('input[name="slices"]'),
+            time = document.querySelector('input[name="time"]'),
+            render = document.getElementById('render');
+        document.getElementById('generate').addEventListener('click', function() {
+            iris.create(render, parseInt(slices.value), color.value, parseInt(time.value));
+        });
+        document.getElementById('open').addEventListener('click', iris.open);
+        document.getElementById('close').addEventListener('click', iris.close);
+    </script>
+</body>
+</html>
